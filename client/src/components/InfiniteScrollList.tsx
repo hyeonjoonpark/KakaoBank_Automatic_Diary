@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { useInfiniteQuery } from '@tanstack/react-query';
+import { categoryColors, Category } from '@/constants/category';
 
 interface ListItem {
   id: number;
@@ -26,7 +27,6 @@ export default function InfiniteScrollList({
   fetchFunction, 
   onScrollRestore 
 }: InfiniteScrollListProps) {
-  const [scrollPosition, setScrollPosition] = useState(0);
   const listRef = useRef<HTMLDivElement>(null);
   const scrollRestored = useRef(false);
 
@@ -50,7 +50,6 @@ export default function InfiniteScrollList({
   useEffect(() => {
     const handleScroll = () => {
       if (listRef.current) {
-        setScrollPosition(listRef.current.scrollTop);
         // 세션 스토리지에 스크롤 위치 저장
         sessionStorage.setItem(`${queryKey.join('-')}-scroll`, listRef.current.scrollTop.toString());
       }
@@ -70,7 +69,6 @@ export default function InfiniteScrollList({
       if (savedScrollPosition) {
         const position = parseInt(savedScrollPosition, 10);
         listRef.current.scrollTop = position;
-        setScrollPosition(position);
         if (onScrollRestore) {
           onScrollRestore(position);
         }
@@ -131,7 +129,7 @@ export default function InfiniteScrollList({
                 <h3 className="font-semibold text-gray-900">{item.title}</h3>
                 <p className="text-sm text-gray-600 mt-1">{item.description}</p>
                 <div className="flex items-center space-x-4 mt-2">
-                  <span className="text-xs bg-gray-100 px-2 py-1 rounded">{item.category}</span>
+                  <span className={`text-xs bg-gray-100 px-2 py-1 rounded`} style={{backgroundColor: categoryColors[item.category as Category]}}>{item.category}</span>
                   <span className="text-xs text-gray-500">{item.date}</span>
                 </div>
               </div>
