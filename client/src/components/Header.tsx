@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { PRIMARY_TEXT_COLOR } from '@/constants/colors';
+import Link from 'next/link';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,20 +18,10 @@ export default function Header() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-3">
-            <span className="text-xl font-bold text-gray-800">서비스 이름 못 정함</span>
+            <span className="text-xl font-bold text-gray-800">
+              <Link href="/">BankAI</Link>
+            </span>
           </div>
-
-          <nav className="hidden md:flex items-center space-x-8">
-            <a href="#features" className="text-gray-600 hover:text-yellow-600 transition-colors">
-              기능
-            </a>
-            <a href="#about" className="text-gray-600 hover:text-yellow-600 transition-colors">
-              소개
-            </a>
-            <a href="#contact" className="text-gray-600 hover:text-yellow-600 transition-colors">
-              문의
-            </a>
-          </nav>
 
           <div className="hidden md:block flex items-center space-x-2">
             <button 

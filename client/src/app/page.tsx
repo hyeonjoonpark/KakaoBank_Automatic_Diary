@@ -1,5 +1,6 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ServiceIntro from '@/components/ServiceIntro';
 import { colors } from '@/constants/colors';
 
 export default function Home() {
@@ -64,6 +65,8 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <ServiceIntro />
       </main>
       <Footer />
     </div>

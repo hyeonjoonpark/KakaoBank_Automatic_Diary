@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-export type TabType = 'category' | 'monthly' | 'calendar';
+export type TabType = 'category' | 'monthly' | 'calendar' | 'transactions';
 
 interface TabStore {
   activeTab: TabType;

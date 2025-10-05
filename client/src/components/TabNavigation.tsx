@@ -36,6 +36,16 @@ export default function TabNavigation() {
         >
           결제 달력
         </button>
+        <button
+          onClick={() => setActiveTab('transactions')}
+          className={`px-8 py-3 rounded-md font-semibold transition-all duration-300 ${
+            activeTab === 'transactions'
+              ? `${colors.primary[400]} text-gray-900 shadow-lg`
+              : 'text-gray-600 hover:text-gray-900'
+          }`}
+        >
+          거래 내역
+        </button>
       </div>
     </div>
   );
