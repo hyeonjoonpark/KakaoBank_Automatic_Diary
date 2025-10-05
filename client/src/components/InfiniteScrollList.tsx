@@ -39,10 +39,11 @@ export default function InfiniteScrollList({
     error,
   } = useInfiniteQuery({
     queryKey,
-    queryFn: ({ pageParam = 0 }) => fetchFunction(pageParam),
-    getNextPageParam: (lastPage) => lastPage.nextCursor,
+    queryFn: ({ pageParam = 0 }) => fetchFunction(pageParam as number),
+    getNextPageParam: (lastPage: any) => lastPage.nextCursor,
+    initialPageParam: 0,
     staleTime: 5 * 60 * 1000, // 5분
-    cacheTime: 10 * 60 * 1000, // 10분
+    gcTime: 10 * 60 * 1000, // 10분
   });
 
   // 스크롤 위치 저장
@@ -112,7 +113,7 @@ export default function InfiniteScrollList({
     );
   }
 
-  const allItems = data?.pages.flatMap(page => page.data) || [];
+  const allItems = data?.pages.flatMap((page: any) => page.data) || [];
 
   return (
     <div 
