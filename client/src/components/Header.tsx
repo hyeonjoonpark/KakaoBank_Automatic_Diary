@@ -1,10 +1,16 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { PRIMARY_TEXT_COLOR } from '@/constants/colors';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const router = useRouter();
+
+  const handleKakaoLogin = () => {
+    router.push('/bank_diary');
+  };
 
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
@@ -27,7 +33,10 @@ export default function Header() {
           </nav>
 
           <div className="hidden md:block flex items-center space-x-2">
-            <button className={`bg-yellow-400 hover:bg-yellow-500 ${PRIMARY_TEXT_COLOR} px-6 py-2 rounded-lg font-medium transition-all duration-300 hover:scale-105 flex items-center space-x-2`}>
+            <button 
+              onClick={handleKakaoLogin}
+              className={`bg-yellow-400 hover:bg-yellow-500 ${PRIMARY_TEXT_COLOR} px-6 py-2 rounded-lg font-medium transition-all duration-300 hover:scale-105 flex items-center space-x-2`}
+            >
               <img src="/kakaotalk logo.svg" alt="KakaoTalk" width="28" height="28" />
               <span>카카오 로그인</span>
             </button>
@@ -55,7 +64,10 @@ export default function Header() {
               <a href="#contact" className="text-gray-600 hover:text-yellow-600 transition-colors">
                 문의
               </a>
-              <button className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-6 py-2 rounded-lg font-medium transition-all duration-300 w-full flex items-center justify-center space-x-2">
+              <button 
+                onClick={handleKakaoLogin}
+                className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-6 py-2 rounded-lg font-medium transition-all duration-300 w-full flex items-center justify-center space-x-2"
+              >
                 <img src="/kakaotalk logo.svg" alt="KakaoTalk" width="28" height="28" />
                 <span>카카오 로그인</span>
               </button>
